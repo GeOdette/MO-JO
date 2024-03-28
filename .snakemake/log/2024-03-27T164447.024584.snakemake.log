@@ -1,0 +1,23 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Job stats:
+job                 count    min threads    max threads
+----------------  -------  -------------  -------------
+download_dataset        1              2              2
+total                   1              2              2
+
+Select jobs to execute...
+
+[Wed Mar 27 16:44:47 2024]
+rule download_dataset:
+    output: /home/odette/stage-two/results/data/ACBarrie_R1.fastq.gz, /home/odette/stage-two/results/data/ACBarrie_R2.fastq.gz, /home/odette/stage-two/results/ref/reference.fasta
+    jobid: 0
+    threads: 2
+    resources: tmpdir=/tmp
+
+[Wed Mar 27 16:44:49 2024]
+Finished job 0.
+1 of 1 steps (100%) done
+Complete log: /home/odette/stage-two/.snakemake/log/2024-03-27T164447.024584.snakemake.log

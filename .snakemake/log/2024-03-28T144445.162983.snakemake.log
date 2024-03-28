@@ -1,0 +1,25 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Job stats:
+job                   count
+------------------  -------
+unzip_fastqc_files        1
+total                     1
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Mar 28 14:44:45 2024]
+localrule unzip_fastqc_files:
+    input: results/fastqc_output/ACBarrie_R2_fastqc.zip, results/fastqc_output/ACBarrie_R1_fastqc.zip
+    output: results/fastqc_output/all_summary_stats.txt
+    jobid: 0
+    reason: Missing output files: results/fastqc_output/all_summary_stats.txt
+    resources: tmpdir=/tmp
+
+[Thu Mar 28 14:44:45 2024]
+Finished job 0.
+1 of 1 steps (100%) done
+Complete log: .snakemake/log/2024-03-28T144445.162983.snakemake.log

@@ -1,0 +1,37 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Job stats:
+job       count
+------  -------
+fastqc        1
+total         1
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Mar 28 13:33:02 2024]
+localrule fastqc:
+    input: /home/odette/stage-two/results/data/ACBarrie_R2.fastq.gz, /home/odette/stage-two/results/data/ACBarrie_R1.fastq.gz
+    output: results/fastqc_output, results/fastqc_out/ACBarrie_R2.zip, results/fastqc_out/ACBarrie_R2.html, results/fastqc_out/ACBarrie_R1.zip, results/fastqc_out/ACBarrie_R1.html
+    jobid: 0
+    reason: Missing output files: results/fastqc_out/ACBarrie_R1.zip, results/fastqc_out/ACBarrie_R2.zip, results/fastqc_out/ACBarrie_R1.html, results/fastqc_out/ACBarrie_R2.html
+    resources: tmpdir=/tmp
+
+Skipped removing non-empty directory results/fastqc_output
+Waiting at most 5 seconds for missing files.
+MissingOutputException in rule fastqc in file /home/odette/stage-two/workflow/rules/fastqc.smk, line 27:
+Job 0 completed successfully, but some output files are missing. Missing files after 5 seconds. This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait:
+results/fastqc_out/ACBarrie_R2.zip (missing locally, parent dir contents: )
+results/fastqc_out/ACBarrie_R2.html (missing locally, parent dir contents: )
+results/fastqc_out/ACBarrie_R1.zip (missing locally, parent dir contents: )
+results/fastqc_out/ACBarrie_R1.html (missing locally, parent dir contents: )
+Removing output files of failed job fastqc since they might be corrupted:
+results/fastqc_output
+Skipped removing non-empty directory results/fastqc_output
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-03-28T133302.052548.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

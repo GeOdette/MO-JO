@@ -1,0 +1,6 @@
+
+data_dir: "/home/odette/stage-two/results/data"
+ref_dir: "/home/odette/stage-two/results/ref" 
+threads: 2
+cores: 
+  download_dataset: 4

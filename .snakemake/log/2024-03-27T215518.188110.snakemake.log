@@ -1,0 +1,3 @@
+ModuleNotFoundError in line 6 of /home/odette/stage-two/workflow/rules/download.smk:
+No module named 'constants'
+  File "/home/odette/stage-two/workflow/rules/download.smk", line 6, in <module>

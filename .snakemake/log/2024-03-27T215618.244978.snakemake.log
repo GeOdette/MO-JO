@@ -1,0 +1,4 @@
+NameError in line 8 of /home/odette/stage-two/workflow/rules/download.snakemake:
+name 'BASE_DIR' is not defined
+  File "/home/odette/stage-two/workflow/Snakefile", line 3, in <module>
+  File "/home/odette/stage-two/workflow/rules/download.snakemake", line 8, in <module>

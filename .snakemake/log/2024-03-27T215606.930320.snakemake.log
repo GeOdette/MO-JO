@@ -1,0 +1,4 @@
+ModuleNotFoundError in line 6 of /home/odette/stage-two/workflow/rules/download.snakemake:
+No module named 'constants.py'
+  File "/home/odette/stage-two/workflow/Snakefile", line 3, in <module>
+  File "/home/odette/stage-two/workflow/rules/download.snakemake", line 6, in <module>

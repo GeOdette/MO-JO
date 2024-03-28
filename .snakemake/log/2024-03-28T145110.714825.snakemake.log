@@ -1,0 +1,39 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Job stats:
+job                   count
+------------------  -------
+all                       1
+unzip_fastqc_files        1
+total                     2
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Mar 28 14:51:11 2024]
+localrule unzip_fastqc_files:
+    input: results/fastqc_output/ACBarrie_R2_fastqc.zip, results/fastqc_output/ACBarrie_R1_fastqc.zip
+    output: results/fastqc_output/all_summary_stats.txt
+    jobid: 3
+    reason: Missing output files: results/fastqc_output/all_summary_stats.txt
+    resources: tmpdir=/tmp
+
+[Thu Mar 28 14:51:11 2024]
+Finished job 3.
+1 of 2 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Mar 28 14:51:11 2024]
+localrule all:
+    input: /home/odette/stage-two/results/data/ACBarrie_R1.fastq.gz, /home/odette/stage-two/results/data/ACBarrie_R2.fastq.gz, /home/odette/stage-two/results/ref/reference.fasta, results/fastqc_output, results/fastqc_output/ACBarrie_R2_fastqc.zip, results/fastqc_output/ACBarrie_R2_fastqc.html, results/fastqc_output/ACBarrie_R1_fastqc.zip, results/fastqc_output/ACBarrie_R1_fastqc.html, results/fastqc_output/all_summary_stats.txt
+    jobid: 0
+    reason: Input files updated by another job: results/fastqc_output/all_summary_stats.txt
+    resources: tmpdir=/tmp
+
+[Thu Mar 28 14:51:11 2024]
+Finished job 0.
+2 of 2 steps (100%) done
+Complete log: .snakemake/log/2024-03-28T145110.714825.snakemake.log

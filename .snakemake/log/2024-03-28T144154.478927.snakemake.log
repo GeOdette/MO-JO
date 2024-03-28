@@ -1,0 +1,43 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Job stats:
+job                   count
+------------------  -------
+unzip_fastqc_files        1
+total                     1
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Mar 28 14:41:54 2024]
+localrule unzip_fastqc_files:
+    input: results/fastqc_output/ACBarrie_R2_fastqc.zip, results/fastqc_output/ACBarrie_R1_fastqc.zip
+    output: results/fastqc_output/all_summary_stats.txt
+    jobid: 0
+    reason: Missing output files: results/fastqc_output/all_summary_stats.txt
+    resources: tmpdir=/tmp
+
+[Thu Mar 28 14:41:54 2024]
+Error in rule unzip_fastqc_files:
+    jobid: 0
+    input: results/fastqc_output/ACBarrie_R2_fastqc.zip, results/fastqc_output/ACBarrie_R1_fastqc.zip
+    output: results/fastqc_output/all_summary_stats.txt
+    shell:
+        
+        for zip_file in results/fastqc_output/ACBarrie_R2_fastqc.zip results/fastqc_output/ACBarrie_R1_fastqc.zip; do
+        unzip_dir=results/fastqc_output/
+        unzip "$zip_file" -d $unzip_dir
+        cat "$unzip_dir/summary.txt" >> results/fastqc_output/all_summary_stats.txt
+        done
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job unzip_fastqc_files since they might be corrupted:
+results/fastqc_output/all_summary_stats.txt
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-03-28T144154.478927.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.
