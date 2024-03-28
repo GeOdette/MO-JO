@@ -1,4 +1,4 @@
-# THE NGS PIPELINE
+#THE NGS PIPELINE
 This pipeline is a snakemake execution of a bioinformatics protocol to process FASQT files
 
 System requirements
