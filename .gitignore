@@ -1,0 +1,4 @@
+fastqc_output/
+results/data/
+results/ref/
+.snakemake
