@@ -1,3 +1,0 @@
-Building DAG of jobs...
-WorkflowError in rule download_dataset in file /home/odette/stage-two/workflow/rules/download.smk, line 12:
-Can only use unpack() on list and dict, but {'ERR8774458_1.fastq.gz': 'https://zenodo.org/records/10426436/files/ERR8774458_1.fastq.gz?download=1', 'ERR8774458_2.fastq.gz': 'https://zenodo.org/records/10426436/files/ERR8774458_2.fastq.gz?download=1', 'Reference.fasta': 'https://zenodo.org/records/10886725/files/Reference.fasta?download=1'} was returned. (rule download_dataset, line 14, /home/odette/stage-two/workflow/rules/download.smk)

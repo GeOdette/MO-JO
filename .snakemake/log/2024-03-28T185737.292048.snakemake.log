@@ -1,3 +1,0 @@
-Building DAG of jobs...
-WorkflowError in rule download_dataset in file /home/odette/stage-two/workflow/rules/download.smk, line 12:
-unpack() is not allowed with params. Simply return a dictionary which can be directly .used, e.g. via {params[mykey]}. (rule download_dataset, line 14, /home/odette/stage-two/workflow/rules/download.smk)

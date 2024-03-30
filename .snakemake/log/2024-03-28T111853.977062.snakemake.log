@@ -1,7 +1,0 @@
-Building DAG of jobs...
-MissingInputException in rule fastqc in file /home/odette/stage-two/workflow/rules/fastqc.smk, line 3:
-Missing input files for rule fastqc:
-    output: results/fastqc_output/.zip, results/fastqc_output/.html
-    affected files:
-        results/data/\w+.fastq.gz
-        results/data/\w+.fastq

@@ -1,2 +1,0 @@
-SyntaxError in line 3 of /home/odette/stage-two/workflow/rules/test.smk:
-Command must be given as string after the shell keyword. (test.smk, line 3)

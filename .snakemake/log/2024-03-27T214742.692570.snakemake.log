@@ -1,3 +1,0 @@
-AttributeError in line 5 of /home/odette/stage-two/workflow/rules/download.smk:
-'list' object has no attribute 'inster'
-  File "/home/odette/stage-two/workflow/rules/download.smk", line 5, in <module>

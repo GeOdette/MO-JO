@@ -7,16 +7,10 @@ from constants.common import *
 
 
 configfile: "config/config.yaml"
-
-
-SAMPLES = [name for name in file_names if name.endswith(".fastq.gz")]
-REF = [name for name in file_names if name.endswith(".fasta")]
-
-
 rule download_dataset:
     output:
-        expand("results/data/{file_name}", file_name=SAMPLES),
-        expand("results/ref/{file_name}", file_name=REF),
+        expand(base_dir + "/results/data/{file_name}", file_name=SAMPLES),
+        expand(base_dir + "/results/ref/{file_name}", file_name=REF),
     threads: config["cores"]["download_dataset"]
     run:
         urls = getFileUrls(urls_df=urls_df)

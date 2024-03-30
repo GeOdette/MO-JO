@@ -1,4 +1,0 @@
-WorkflowError in line 2 of /home/odette/stage-two/workflow/Snakefile:
-Failed to open source file /home/odette/stage-two/workflow/rules/download.smk
-FileNotFoundError: [Errno 2] No such file or directory: '/home/odette/stage-two/workflow/rules/download.smk'
-  File "/home/odette/stage-two/workflow/Snakefile", line 2, in <module>

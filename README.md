@@ -4,6 +4,8 @@ This pipeline is a snakemake execution of a bioinformatics protocol to process F
 **System requirements**
 - Linux distribution
 - Your favorite code editor (Visual Studio code, sublime text, Pycharm etc)
+- snakemake version 8.10.0 or later. One of the errors experienced during development 
+  **'PosixPath' object has no attribute 'startswith'** is due to an incompatible version of snakemake/python.
 
 # How to run the pipeline:
 - With this version, clone this repository in your local environment

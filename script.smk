@@ -1,3 +1,8 @@
+import sys
+import os
+
+sys.path.insert(0, Path(workflow.basedir))
+
 
 include: "workflow/rules/download.smk"
 include: "workflow/rules/fastqc.smk"
@@ -5,13 +10,11 @@ include: "workflow/rules/fastqc.smk"
 
 rule all:
     input:
-        config["data_dir"] + "/ACBarrie_R1.fastq.gz",
-        config["data_dir"] + "/ACBarrie_R2.fastq.gz",
-        config["ref_dir"] + "/reference.fasta",
-        output_dir=directory("results/fastqc_output/"),
-        output_files=expand(
-            "results/fastqc_output/{sample}_fastqc.{ext}",
-            sample=SAMPLES,
+        expand(base_dir + "/results/data/{file_name}", file_name=SAMPLES),
+        expand(base_dir + "/results/ref/{file_name}", file_name=REF),
+        expand(
+            base_dir + "/results/fastqc_output/{sample}_fastqc.{ext}",
+            sample=SAMPLES_f,
             ext=EXTENSIONS,
         ),
-        summary_stats="results/fastqc_output/all_summary_stats.txt",
+        base_dir + "/results/fastqc_output/all_summary_stats.txt",
