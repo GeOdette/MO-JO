@@ -8,10 +8,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Creating needed dirs
 os.makedirs(os.path.join(BASE_DIR, 'results/data'), exist_ok=True)
 os.makedirs(os.path.join(BASE_DIR, 'results/ref'), exist_ok=True)
-os.makedirs(os.path.join(BASE_DIR, 'results/fastqc_output'), exist_ok=True)
+os.makedirs(os.path.join(BASE_DIR, 'results/fastqc_output/'), exist_ok=True)
 base_dir = str(BASE_DIR)
-df = pd.read_csv(os.path.join(BASE_DIR, "links.csv"), header=None)
-urls_df = df.iloc[:, 0]
+DATA_DIR = os.path.join(BASE_DIR, "results", "data")
+FASTQC_DIR = os.path.join(BASE_DIR, "results", "fastqc_output")
+REF_DIR = os.path.join(BASE_DIR, "results", "ref")
+TRIMMED_OUT_DIR = os.path.join(BASE_DIR, "results", "trimmed")
+TRIMMED_OUT_DIRfq = os.path.join(BASE_DIR, "results", "trimmed", "fastqc_out")
+fq_df = pd.read_csv(os.path.join(BASE_DIR, "links.csv"), header=None)
+urls_df = fq_df.iloc[:, 0]
 file_names = []
 for url in urls_df:
     file_name = url.split("/")[-1].split("?")[0]
@@ -36,10 +41,13 @@ def getSampleNames(input_dir: str):
             sample_names.append(os.path.splitext(files_with_ext)[0])
     return sample_names
 
-SAMPLES_f = getSampleNames("results/data")
+SAMPLES_f = getSampleNames(DATA_DIR)
+sample_names_list = list(set([sample.split('_')[0] for sample in getSampleNames(DATA_DIR)]))
+sample_name = [name for name in sample_names_list]
 def getFileUrls(urls_df):
     file_urls = {}
     for url in urls_df:
         file_name = url.split("/")[-1].split("?")[0]
         file_urls[file_name] = url
     return file_urls
+print(sample_name)

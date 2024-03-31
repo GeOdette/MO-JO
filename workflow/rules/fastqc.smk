@@ -2,33 +2,34 @@ import os
 import glob
 import sys
 from pathlib import Path
-
 sys.path.insert(0, Path(workflow.basedir).parent.parent.as_posix())
 from constants.common import *
 EXTENSIONS = ["zip", "html"]
 rule fastqc:
     output:
-        expand(
-            base_dir + "/results/fastqc_output/{sample}_fastqc.{ext}",
-            sample=SAMPLES_f,
-            ext=EXTENSIONS,
-        ),
+        expand( [
+            FASTQC_DIR + "/{sample}_fastqc.html",
+            FASTQC_DIR + "/{sample}_fastqc.zip",
+
+        ],sample=SAMPLES_f,
+
+        )
     input:
-        *getInputFiles("results/data", "fastq.gz"),
+        *getInputFiles(DATA_DIR, "fastq.gz"),
     params:
-        fastqc_output= base_dir + "/results/fastqc_output",
+        FASTQC_DIR 
     shell:
         """
-        fastqc {input} -o {params.fastqc_output}
+        fastqc {input} -o {params}
         """
 
 rule unzip_fastqc_files:
     output:
-        summary_stats="results/fastqc_output/all_summary_stats.txt",
+        summary_stats=FASTQC_DIR + "/all_summary_stats.txt",
     input:
         input_files=expand(
-            "results/fastqc_output/{sample}_fastqc.{ext}",
-            sample=SAMPLES,
+            FASTQC_DIR + "/{sample}_fastqc.{ext}",
+            sample=SAMPLES_f,
             ext=["zip"],
         ),
     shell:
