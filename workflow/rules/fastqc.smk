@@ -6,9 +6,7 @@ from constants.common import *
 EXTENSIONS = ["zip", "html"]
 rule fastqc:
     output:
-        expand(FASTQC_DIR + "/{sample}_fastqc.html", sample=SAMPLES_f),
-        expand(FASTQC_DIR + "/{sample}_fastqc.zip", sample=SAMPLES_f),
-        directory(FASTQC_DIR)
+        expand(["{fastqc_dir}/{sample}_fastqc.html", "{fastqc_dir}/{sample}_fastqc.zip"], fastqc_dir=FASTQC_DIR, sample=SAMPLES_f)
     input:
         *getInputFiles()
     params:
