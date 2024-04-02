@@ -28,10 +28,12 @@ This pipeline is a snakemake execution of a bioinformatics protocol to process F
 
 ## Running the pipeline
 - To run the pipeline, use the following code:
+- Ensure you activate your conda environment and have snakemake version 8 and above
+- Change into the project directory. Specifically, **NGS_pipeline**
 
-  `snakemake -s script.smk --cores 2`
+  `snakemake --profile config/`
 
-- Set the number of cores in the `--cores 2` to your specifications
+- **NOTE:** The number of cores have been set in the config file. You can adjust that depending on you compute resources
 
 # Tools executed by the pipeline
 
