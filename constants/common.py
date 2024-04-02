@@ -23,6 +23,19 @@ for url in urls_df:
     file_names.append(file_name)
 SAMPLES = [name for name in file_names if name.endswith(".fastq.gz")]
 REF = [name for name in file_names if name.endswith(".fasta")]
+def is_reference_genome(file_names):
+    fasta_files = [file for file in file_names if file.endswith(".fasta")]
+    if fasta_files:
+        return fasta_files[0]
+    else:
+        return None
+
+ref_genome_filename = is_reference_genome(file_names)
+
+if ref_genome_filename:
+    ref_g = os.path.join(REF_DIR, ref_genome_filename)
+else:
+    ref_g = None
 def getInputFiles(ext="fastq.gz"):
     list_of_files = []
     for file in file_names:

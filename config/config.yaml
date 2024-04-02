@@ -3,3 +3,6 @@ snakefile: script.smk
 cores: 2
 --latency-wait: 60
 --restart-times: 3
+
+params:
+  
