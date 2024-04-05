@@ -1,27 +1,23 @@
 #!/bin/bash
 
-# Create a conda environment for the pipeline
-conda create -n NGS_pipeline python=3.8 -y
+conda install -n base -c conda-forge mamba
 
-# Activate the environment
-source activate NGS_pipeline
+mamba create -c conda-forge -c bioconda -n NGS_P snakemake
 
-# Install Snakemake
-conda install -c bioconda -c conda-forge snakemake -y
+conda activate NGS_P
 
-# Install FastQC
-conda install -c bioconda fastqc -y
+conda install bioconda::fastqc -y
 
-# Install FastP
-conda install -c bioconda fastp -y
+mamba install fastp -y
 
-# Install BWA
-conda install -c bioconda bwa -y
+conda install bioconda::bwa -y
 
-# Install Samtools
-conda install -c bioconda samtools -y
+conda install bioconda::samtools -y
 
-# Install BCFtools
-conda install -c bioconda bcftools -y
+conda install bioconda::bcftools -y
 
-echo "Installation complete. Activate the conda environment with 'conda activate snakemake_pipeline' before running the pipeline."
+conda install bioconda::multiqc -y
+
+sudo apt-get install pandoc
+
+echo "Installation complete. Activate the conda environment with 'conda activate NGS_p' before running the pipeline."

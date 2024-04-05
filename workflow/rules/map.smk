@@ -3,38 +3,48 @@ import sys
 from pathlib import Path
 sys.path.insert(0, Path(workflow.basedir).parent.parent.as_posix())
 from constants.common import *
+
+rule get_map_cmds:
+    input:
+        ref=ref_g
+    output:
+        TEMP_DIR + "/map_cmds.txt"
+    run:
+        map_cmds_(ref=ref_g)
+
 rule index_ref:
     input:
         ref_g
     output:
-        expand(REF_DIR + "/{ref}.{ext}", ref="Reference.fasta", ext=['amb', 'ann', 'bwt', 'pac', 'sa'])
+        expand(REF_DIR + "/{ref}.fasta.{ext}", ref=ref_genome_filename, ext=['amb', 'ann', 'bwt', 'pac', 'sa'])
     shell:
         "bwa index {input}"
-# def get_bwa_cmd():
-#     bwa_cmds = []  
-#     read1_files = [file for file in getInputFiles() if file.endswith("_1.fastq.gz")]
-#     for read1 in read1_files:
-#         read2 = read1.replace("_1.fastq.gz", "_2.fastq.gz")  
-#         bwa_cmd_ = f"bwa mem {ref} {read1} {read2}"
-#         bwa_cmds.append(bwa_cmd_) 
-#     return bwa_cmds
-# print(*get_bwa_cmd())
-
 
 rule bwa_map:
     input:
         ref=ref_g,
-        reads=expand(TRIMMED_OUT_DIR + "/{sample}_{read}_trimmed_fastq.gz", sample=sample_name, read=['1', '2'])
-        
+        map_cmds = TEMP_DIR + "/map_cmds.txt",
+        trimmed_reads=expand(TRIMMED_OUT_DIR + "/trimmed_{sample}_{reads}.fastq.gz", sample=sample_name, reads=['R1', 'R2']),
+        indices=expand(REF_DIR + "/{ref}.fasta.{ext}", ref=ref_genome_filename, ext=['amb', 'ann', 'bwt', 'pac', 'sa'])
     output:
-        sam_file=str(BASE_DIR) + "/results/bam/aligned_{sample}.sam",
-        bam_output=str(BASE_DIR) + "/results/bam/aligned_{sample}.bam",
-        sorted_bam_out_=str(BASE_DIR) + "/results/bam/alined_sorted_{sample}.bam",
-        bai=str(BASE_DIR) + "/results/bam/alined_sorted_{sample}.bam.bai"
+        sam_file=expand(str(BASE_DIR) + "/results/bam/aligned_{sample}.sam", sample=sample_name),
+        bam_output=expand(str(BASE_DIR) + "/results/bam/aligned_{sample}.bam", sample=sample_name),
+        sorted_bam_out_= expand(str(BASE_DIR) + "/results/bam/aligned_{sample}_sorted.bam", sample=sample_name),
+        bai=expand(str(BASE_DIR) + "/results/bam/aligned_{sample}_sorted.bam.bai", sample=sample_name),
+    params: 
+        extra_args = ''
     shell:
         """
-        bwa mem {input.ref} {input.reads[0]} {input.reads[1]} > {output.sam_file}
-        samtools view -Sb {output.sam_file} -b > {output.bam_output}
-        samtools sort {output.bam_output} -o {output.sorted_bam_out_}
-        samtools index {output.sorted_bam_out_}
+        while read -r cmd;do
+        $cmd {params.extra_args}
+        done < {input.map_cmds}
+        for sam_ in {output.sam_file}; do
+        bam_="${{sam_%.sam}}.bam"
+        samtools view -Sb $sam_ -o $bam_
+        done
+
+        for bam_ in {output.bam_output}; do
+        bam_out="${{bam_%.bam}}_sorted.bam"
+        samtools sort $bam_ -o $bam_out && samtools index $bam_out
+        done
         """
