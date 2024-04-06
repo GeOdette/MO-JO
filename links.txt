@@ -1,9 +1,3 @@
 ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR928/003/ERR9285773/ERR9285773_2.fastq.gz
-ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR928/006/ERR9285776/ERR9285776_2.fastq.gz
-ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR928/007/ERR9285777/ERR9285777_2.fastq.gz
-ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR928/006/ERR9285776/ERR9285776_1.fastq.gz
-ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR928/000/ERR9285770/ERR9285770_2.fastq.gz
 ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR928/003/ERR9285773/ERR9285773_1.fastq.gz
-ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR928/007/ERR9285777/ERR9285777_1.fastq.gz
-ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR928/000/ERR9285770/ERR9285770_1.fastq.gz
 https://zenodo.org/records/3497110/files/MTB_ancestor_reference.fasta?download=1

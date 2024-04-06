@@ -20,4 +20,7 @@ conda install bioconda::multiqc -y
 
 sudo apt-get install pandoc
 
+# Installing additional dependencies
+pip install snakemake-wrapper-utils
+
 echo "Installation complete. Activate the conda environment with 'conda activate NGS_p' before running the pipeline."
