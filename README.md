@@ -14,10 +14,12 @@ This pipeline is a snakemake execution of a bioinformatics protocol to process F
 - If you have a reference genome, store it in the ref genome folder. Ensure that you only have one ref genome for each run, 
   otherwise the downstream analyses will fail.
 
+## Test data
+- There is test data, which are file links to test this pipeline in the `links.txt` file. You can remove these links to work with your own file links
 # How to run the pipeline:
 - With this version, clone this repository in your local environment
 
-  `git clone https://github.com/GeOdette/NGS_pipeline.git`
+  `git clone https://github.com/GeOdette/MO-JO.git`
 
 - Next, install the necessary bioinformatics tools required for the pipeline. Use the `setup.sh` file at the base of the folder.
 
@@ -36,7 +38,7 @@ This pipeline is a snakemake execution of a bioinformatics protocol to process F
 ## Running the pipeline
 - To run the pipeline, use the following code:
 - Ensure you activate your conda environment and have snakemake version 8 and above
-- Change into the project directory. Specifically, **NGS_pipeline**
+- Change into the project directory. Specifically, **MO-JO**
 
   `snakemake --profile config/`
 
@@ -55,6 +57,8 @@ This pipeline is a snakemake execution of a bioinformatics protocol to process F
 - `SAMTOOLS` for sorting and indexing
   
 - `BCFTOOLs` for variant calling with an option for freebayes
+  
+- `MULTIQC` for generating quality reports
 
 # Expected outputs
 
@@ -74,8 +78,8 @@ This pipeline is a snakemake execution of a bioinformatics protocol to process F
 ## Running into errors:
 - If you run into an error that, eigther due to the bioinformatics tools use, consider restarting the pipeline again.
 - The pipeline will pick from process you have not run. 
-- **Errors can occur not due to the pipeline but sequence files used*.* In these isntances, be sure to correct the files and start the run.
-- For a smooth run, use the command snakemake --profile config/ --re
+- **Errors can occur not due to the pipeline but sequence files used** In these isntances, be sure to correct the files and start the run.
+- For a smooth run, use the command snakemake --profile config/ --re-reun-incomplete
 
 ## The config file
 - You may edit the config file to include as many parameters as you want.

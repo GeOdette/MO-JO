@@ -14,4 +14,4 @@ rule download:
         reads_out=expand(DATA_DIR + "/{file_name}", file_name=SAMPLES),
         ref_out=expand(REF_DIR + "/{file_name}", file_name=REF),
     shell:
-        "/home/odette/NGS_pipeline/workflow/scripts/download.sh"
+        "workflow/scripts/download.sh"
