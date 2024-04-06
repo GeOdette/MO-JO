@@ -79,7 +79,7 @@ This pipeline is a snakemake execution of a bioinformatics protocol to process F
 - If you run into an error that, eigther due to the bioinformatics tools use, consider restarting the pipeline again.
 - The pipeline will pick from process you have not run. 
 - **Errors can occur not due to the pipeline but sequence files used** In these isntances, be sure to correct the files and start the run.
-- For a smooth run, use the command snakemake --profile config/ --re-reun-incomplete
+- For a smooth run, use the command snakemake `--profile config/ --re-reun-incomplete`
 
 ## The config file
 - You may edit the config file to include as many parameters as you want.
