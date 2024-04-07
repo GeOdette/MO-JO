@@ -14,7 +14,7 @@ conda install  bioconda::samtools -y
 
 conda install bioconda::bcftools -y
 
-conda install mojo bioconda::multiqc -y
+conda install bioconda::multiqc -y
 
 sudo apt-get install pandoc
 
