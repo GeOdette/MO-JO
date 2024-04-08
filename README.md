@@ -27,7 +27,7 @@
 ## How to run the pipeline:
 - With this version, clone this repository in your local environment
 
-  `git clone https://github.com/GeOdette/MO-JO.git`
+  `https://github.com/GeOdette/micromake.git`
 
 - Next, install the necessary bioinformatics tools required for the pipeline. Use the `setup.sh` file at the base of the folder.
 
@@ -46,7 +46,7 @@
 ## Running the pipeline
 - To run the pipeline, use the following code:
 - Ensure you activate your conda environment and have snakemake version 8 and above
-- Change into the project directory. Specifically, **MO-JO**
+- Change into the project directory. Specifically, **micromake**
 
   `snakemake --profile config/`
 
